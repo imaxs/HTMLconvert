@@ -32,4 +32,4 @@ jobs:
     - name: Push To Nuget
       env:
         NUGET_AUTH_TOKEN: ${{secrets.NUGETKEY}}
-      run: dotnet nuget push -s https://www.nuget.org/api/v2/package -k $NUGET_AUTH_TOKEN *.nupkg
+      run: dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key $NUGET_AUTH_TOKEN --skip-duplicate
