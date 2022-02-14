@@ -1,8 +1,9 @@
-namespace HTMLconvert.Core.Settings
+using HTMLconvert.Core.Conventions;
+using HTMLconvert.Core.Settings;
+
+namespace HTMLconvert
 {
-    using Conventions;
-    
-    public class ImageSettings : IImageSettings, ISettings
+    public class ImageSettings : IImageSettings
     {
         private WebSettings m_WebSettings;
         private LoadSettings m_LoadSettings;

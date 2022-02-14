@@ -1,6 +1,6 @@
 namespace HTMLconvert.Core.Settings
 {
-    interface IPdfSettings
+    interface IPdfSettings : ISettings
     {
         /// <summary>
         /// The orientation of the output document, must be either "Landscape" or "Portrait". Default = "portrait"

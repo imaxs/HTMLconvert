@@ -1,6 +1,5 @@
 using NUnit.Framework;
 using HTMLconvert;
-using HTMLconvert.Core.Settings;
 using System.IO;
 
 namespace Tests

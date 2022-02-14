@@ -1,6 +1,6 @@
 namespace HTMLconvert.Core.Settings
 {
-    interface IImageSettings
+    interface IImageSettings : ISettings
     {
         /// <summary>
         /// Left / x coordinate of the window to capture in pixels. E.g. "200"

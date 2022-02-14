@@ -1,8 +1,9 @@
-namespace HTMLconvert.Core.Settings
+using HTMLconvert.Core.Conventions;
+using HTMLconvert.Core.Settings;
+
+namespace HTMLconvert
 {
-    using Conventions;
-    
-    public class HeaderSettings : ISettings
+    public class HeaderSettings : IHeaderSettings
     {
         /// <summary>
         /// The font size to use for the header. Default = 12

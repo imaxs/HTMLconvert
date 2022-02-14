@@ -1,7 +1,8 @@
-namespace HTMLconvert.Core.Settings
+using HTMLconvert.Core.Conventions;
+using HTMLconvert.Core.Settings;
+
+namespace HTMLconvert
 {
-    using Conventions;
-    
     public class ObjectSettings : IObjectSettings
     {
         private HeaderSettings m_HeaderSettings;

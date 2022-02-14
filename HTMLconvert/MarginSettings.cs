@@ -1,8 +1,9 @@
 using System.Globalization;
+using HTMLconvert.Core.Settings;
 
-namespace HTMLconvert.Core.Settings
+namespace HTMLconvert
 {
-    public class MarginSettings : ISettings
+    public class MarginSettings : IMarginSettings
     {
         public Unit Unit { get; set; }
 

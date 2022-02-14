@@ -1,8 +1,10 @@
-namespace HTMLconvert.Core.Settings
+using HTMLconvert.Core;
+using HTMLconvert.Core.Conventions;
+using HTMLconvert.Core.Settings;
+
+namespace HTMLconvert
 {
-    using Conventions;
-    
-    public class PdfSettings : IPdfSettings, ISettings
+    public class PdfSettings : IPdfSettings
     {
         private MarginSettings m_Margins;
 
