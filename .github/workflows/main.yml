@@ -12,7 +12,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Parse Version
-    - uses: kzrnm/get-net-sdk-project-versions-action@v1
+      uses: kzrnm/get-net-sdk-project-versions-action@v1
       id: version
       with:
         proj-path: HTMLconvert/HTMLconvert.csproj
