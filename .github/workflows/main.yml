@@ -1,8 +1,9 @@
-name: .NET Core
+name: Publish to Nuget
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   build:
@@ -29,7 +30,7 @@ jobs:
     - name: Publish HTMLconvert
       uses: brandedoutcast/publish-nuget@v2.5.5
       with:
+          NUGET_KEY: ${{secrets.NUGETKEY}}
           PACKAGE_NAME: HTMLconvert
           PROJECT_FILE_PATH: HTMLconvert/HTMLconvert.csproj
-          NUGET_KEY: ${{secrets.NUGETKEY}}
           VERSION_REGEX: <Version>(.*)<
