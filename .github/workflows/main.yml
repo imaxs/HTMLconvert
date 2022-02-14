@@ -13,6 +13,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
+#    - name: Install wkthtmltopdf
+#      run: |
+#        sudo apt-get install -y xfonts-base xfonts-75dpi
+#        wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb
+#        sudo dpkg -i wkhtmltox_0.12.6-1.bionic_amd64.deb
+    
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
@@ -23,12 +29,15 @@ jobs:
       
     - name: Build
       run: dotnet build --configuration Release  --no-restore
-      
+
+#    - name: Tests
+#      run: dotnet test Tests/Tests.csproj --no-restore --verbosity normal
+
     - name: Publish to NuGet
       uses: brandedoutcast/publish-nuget@v2.5.5
       with:
         PROJECT_FILE_PATH: HTMLconvert/HTMLconvert.csproj
-        PACKAGE_NAME: HTMLconvert
+        PACKAGE_NAME: HTMLconvert.NETCore
         VERSION_REGEX: '^\s*<Version>(.*)<\/Version>\s*$'
         TAG_FORMAT: '*'
         NUGET_KEY: ${{secrets.NUGETAPIKEY}}
