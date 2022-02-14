@@ -7,20 +7,19 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
 
     steps:
     - uses: actions/checkout@v2
+    - name: Install wkthtmltopdf
+      run: |
+        sudo apt-get install -y xfonts-base xfonts-75dpi
+        wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb
+        sudo dpkg -i wkhtmltox_0.12.6-1.bionic_amd64.deb
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.101
-    - name: Install wkhtmltopdf
-      run: sudo apt-get install -y wkhtmltopdf
-    - name: Install libfontconfig
-      run: sudo apt-get install -y libfontconfig
-    - name: Install xvfb
-      run: sudo apt-get install -y xvfb
     - name: Install dependencies
       run: dotnet restore HTMLconvert.sln
     - name: Build
