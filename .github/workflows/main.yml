@@ -11,23 +11,15 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Install Wkthtmltopdf package
-      run: |
-        sudo apt-get install -y xfonts-base xfonts-75dpi
-        wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb
-        sudo dpkg -i wkhtmltox_0.12.6-1.bionic_amd64.deb
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
+    - name: Parse Version
+    - uses: kzrnm/get-net-sdk-project-versions-action@v1
+      id: version
       with:
-        dotnet-version: 6.0.101
-    - name: Install dependencies
-      run: dotnet restore HTMLconvert.sln
-    - name: Build
-      run: dotnet build HTMLconvert.sln --configuration Release --no-restore
-    - name: Test
-      run: dotnet test Tests/Tests.csproj --no-restore --verbosity normal
-    - name: Pack
-      run: dotnet pack --no-build --configuration Release HTMLconvert/HTMLconvert.csproj --output .
-    - name: Push to Nuget
-      run: dotnet nuget push -s https://www.nuget.org/api/v2/package -k ${{secrets.NUGETAPIKEY}} *.nupkg
-
+        proj-path: YourProject/YourProject.csproj
+    - run: echo "${{steps.version.outputs.version}}"
+    - run: echo "${{steps.version.outputs.version-prefix}}" 
+    - run: echo "${{steps.version.outputs.version-suffix}}" 
+    - run: echo "${{steps.version.outputs.package-version}}" 
+    - run: echo "${{steps.version.outputs.assembly-version}}" 
+    - run: echo "${{steps.version.outputs.file-version}}" 
+    - run: echo "${{steps.version.outputs.informational-version}}"
