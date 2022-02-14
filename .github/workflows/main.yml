@@ -15,7 +15,7 @@ jobs:
     - uses: kzrnm/get-net-sdk-project-versions-action@v1
       id: version
       with:
-        proj-path: YourProject/YourProject.csproj
+        proj-path: HTMLconvert/HTMLconvert.csproj
     - run: echo "${{steps.version.outputs.version}}"
     - run: echo "${{steps.version.outputs.version-prefix}}" 
     - run: echo "${{steps.version.outputs.version-suffix}}" 
