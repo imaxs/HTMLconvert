@@ -24,12 +24,12 @@ jobs:
     - name: Install dependencies
       run: dotnet restore HTMLconvert.sln
     - name: Build
-      run: dotnet build HTMLconvert.sln --configuration Release --no-restore 
+      run: dotnet build HTMLconvert.sln --configuration Release --no-restore
     - name: Tests
-      run: dotnet test Tests/Tests.csproj
-    - name: Publish HTMLconvert
-      uses: brandedoutcast/publish-nuget@v2.5.5
-      with:
-          NUGET_KEY: ${{secrets.NUGETKEY}}
-          PROJECT_FILE_PATH: HTMLconvert/HTMLconvert.csproj
-          VERSION_REGEX: <Version>(.*)<
+      run: dotnet test Tests/Tests.csproj --no-restore --verbosity normal
+    - name: Pack
+      run: dotnet pack --no-build --configuration Release HTMLconvert/HTMLconvert.csproj --output .
+    - name: Push To Nuget
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.NUGETKEY}}
+      run: dotnet nuget push -s https://www.nuget.org/api/v2/package -k $NUGET_AUTH_TOKEN *.nupkg
