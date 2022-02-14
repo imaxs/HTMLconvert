@@ -3,6 +3,47 @@
 **HTMLconvert** is a lightweight and easy to use wrapper for [wkhtmltopdf](https://wkhtmltopdf.org/) library that will help you convert HTML to PDF/Image bytes.
 
 ---
+
+#### Installation via NuGet
+You can install the library via Nuget ([HTMLconvert.NETCore](https://www.nuget.org/packages/HTMLconvert.NETCore/)). Run below command from package manager console:
+```
+PM> Install-Package HTMLconvert.NETCore -Version 1.0.0
+```
+
+#### Install wkhtmltopdf
+
+##### Ubuntu 20.04:
+```console
+wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.focal_amd64.deb
+sudo apt install ./wkhtmltox_0.12.6-1.focal_amd64.deb
+```
+##### Ubuntu 18.04:
+```console
+wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb
+sudo apt install ./wkhtmltox_0.12.6-1.bionic_amd64.deb
+```
+##### Ubuntu 16.04:
+```console
+wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.xenial_amd64.deb
+sudo apt install ./wkhtmltox_0.12.6-1.xenial_amd64.deb
+```
+##### Debian 10
+```console
+wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.buster_amd64.deb
+sudo apt install ./wkhtmltox_0.12.6-1.buster_amd64.deb
+```
+##### Debian 9
+```console
+wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.stretch_amd64.deb
+sudo apt install ./wkhtmltox_0.12.6-1.stretch_amd64.deb
+```
+##### MacOS
+```console
+$ brew update && brew cask install wkhtmltopdf
+```
+---
+### Usage
+
 #### Convert a web page to a png bytes
 ```csharp
 var imageConverter = new Converter(new ImageTools(useGraphics: false));
