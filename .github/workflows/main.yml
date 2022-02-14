@@ -1,9 +1,9 @@
-name: Publish to Nuget
-
+name: Publish Nuget package
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
@@ -11,8 +11,9 @@ jobs:
     runs-on: ubuntu-18.04
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Install wkthtmltopdf
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Install Wkthtmltopdf package
       run: |
         sudo apt-get install -y xfonts-base xfonts-75dpi
         wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb
@@ -21,15 +22,20 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.101
+        source-url: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
+      env:
+        NUGET_AUTH_TOKEN: '%NUGET_AUTH_TOKEN%'
     - name: Install dependencies
       run: dotnet restore HTMLconvert.sln
     - name: Build
       run: dotnet build HTMLconvert.sln --configuration Release --no-restore
-    - name: Tests
-      run: dotnet test Tests/Tests.csproj --no-restore --verbosity normal
+    - name: Test
+      run: dotnet test Tests/Tests.csproj --no-restore --verbosity normal --no-build
     - name: Pack
-      run: dotnet pack --no-build --configuration Release HTMLconvert/HTMLconvert.csproj --output .
-    - name: Push To Nuget
+      run: dotnet pack --no-build --configuration Release HTMLconvert/HTMLconvert.csproj --no-build --output .
+    - name: Push to Nuget
+      run: dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGETKEY}} --skip-duplicate
+    - name: Push to Github
+      run: dotnet nuget push *.nupkg --no-symbols --skip-duplicate
       env:
-        NUGET_AUTH_TOKEN: ${{secrets.NUGETKEY}}
-      run: dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key $NUGET_AUTH_TOKEN --skip-duplicate
+        NUGET_AUTH_TOKEN: ${{ secrets.GITHUBTOKEN }}
