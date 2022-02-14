@@ -29,7 +29,5 @@ jobs:
     - name: Pack
       run: dotnet pack --no-build --configuration Release HTMLconvert/HTMLconvert.csproj --output .
     - name: Push to Nuget
-      run: dotnet nuget push -s https://www.nuget.org/api/v2/package -k $NUGET_KEY *.nupkg
-      env:
-        NUGET_KEY: ${{secrets.NUGETAPIKEY}}
+      run: dotnet nuget push -s https://www.nuget.org/api/v2/package -k ${{secrets.NUGETAPIKEY}} *.nupkg
 
