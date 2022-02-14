@@ -6,7 +6,7 @@ namespace Tests
 {
     public class Tests
     {
-        [Test]
+        [Test, Order(0)]
         public void ImageConverterWebTest()
         {
             var pathToImage = Path.Combine(Directory.GetCurrentDirectory(), "web.png"); 
@@ -26,7 +26,7 @@ namespace Tests
             Assert.AreEqual(true, File.Exists(pathToImage));
         }
         
-        [Test]
+        [Test, Order(1)]
         public void ImageConverterHTMLContentTest()
         {
             var pathToImage = Path.Combine(Directory.GetCurrentDirectory(), "HTMLcontent.png"); 
@@ -47,7 +47,7 @@ namespace Tests
             Assert.AreEqual(true, File.Exists(pathToImage));
         }
         
-        [Test]
+        [Test, Order(2)]
         public void PdfConverterHTMLContentTest()
         {
             var pathToPdf = Path.Combine(Directory.GetCurrentDirectory(), "DocumentHTML.pdf"); 
@@ -83,7 +83,7 @@ namespace Tests
             Assert.AreEqual(true, File.Exists(pathToPdf));
         }
         
-        [Test]
+        [Test, Order(3)]
         public void PdfConverterWebTest()
         {
             var pathToPdf = Path.Combine(Directory.GetCurrentDirectory(), "DocumentWeb.pdf"); 
