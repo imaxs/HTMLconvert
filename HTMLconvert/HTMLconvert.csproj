@@ -1,9 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <PackageId>HTMLconvert</PackageId>
+        <PackageId>HTMLconvert.NETCore</PackageId>
         <Authors>imaxs</Authors>
-        <Company>imaxs</Company>
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
@@ -13,7 +12,7 @@
         <PackageProjectUrl>https://github.com/imaxs/HTMLconvert</PackageProjectUrl>
         <RepositoryUrl>https://github.com/imaxs/HTMLconvert</RepositoryUrl>
         <RepositoryType></RepositoryType>
-        <PackageReleaseNotes>wkhtmltopdf, html, pdf, image, convert</PackageReleaseNotes>
+        <PackageReleaseNotes></PackageReleaseNotes>
         <Version>1.0.0</Version>
         <FileVersion>1.0.0</FileVersion>
         <AssemblyVersion>1.0.0</AssemblyVersion>
