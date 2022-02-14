@@ -1,12 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <PackageId>HTMLconvert</PackageId>
+        <Authors>imaxs</Authors>
+        <Company>imaxs</Company>
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Authors>imaxs</Authors>
         <Description>C# .NET P/Invoke wrapper for wkhtmltopdf library that uses WebKit to convert HTML to PDF and Image.</Description>
         <PackageProjectUrl>https://github.com/imaxs/HTMLconvert</PackageProjectUrl>
         <RepositoryUrl>https://github.com/imaxs/HTMLconvert</RepositoryUrl>
