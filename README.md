@@ -1,6 +1,12 @@
 # HTMLconvert
 ### C# .NET Core P/Invoke wrapper for wkhtmltopdf library that uses WebKit to convert HTML to PDF and Image.
-**HTMLconvert** is a lightweight and easy to use wrapper for [wkhtmltopdf](https://wkhtmltopdf.org/) library that will help you convert HTML to PDF/Image bytes.
+
+<table bordercolor="white" border="0"><tr>
+    <td>
+        <img width="250" src="/Images/pic.png?raw=true"/>
+    </td>
+    <td><b>HTMLconvert</b> is a lightweight and easy to use wrapper for <a href="https://wkhtmltopdf.org/">wkhtmltopdf</a> library that will help you convert HTML to PDF/Image bytes.</td>
+    </tr></table>
 
 ---
 
