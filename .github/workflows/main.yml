@@ -1,62 +1,34 @@
-name: CI
+name: Nuget HTMLconvert
 
-on:
-  create:
-    branches: 
-      - release/**
+on: 
   push:
     branches:
-    - main
-  pull_request:
-    branches:
-    - main
-    
+      - main
+      
 jobs:
-  build:
-
-    env:
-      BUILD_CONFIG: 'Release'
-      SOLUTION: 'HTMLconvert.sln'
-      CSPROJFILE: 'HTMLconvert/HTMLconvert.csproj'
-
+  publish-nuget:
+  
     runs-on: ubuntu-18.04
-
+    
     steps:
     - uses: actions/checkout@v2
     
-    - name: Parse Version
-      uses: kzrnm/get-net-sdk-project-versions-action@v1
-      id: version
-      with:
-        proj-path: $env:CSPROJFILE
-    - run: |
-         echo "${{steps.version.outputs.version}}"
-         echo "BUILD_VERSION=${{steps.version.outputs.version}}"
-      shell: pwsh
-
-    - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.5
-
-    - name: Install Wkthtmltopdf package
-      run: |
-        sudo apt-get install -y xfonts-base xfonts-75dpi
-        wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb
-        sudo dpkg -i wkhtmltox_0.12.6-1.bionic_amd64.deb
-
-    - name: Restore dependencies
-      run: nuget restore ${SOLUTION}
-
-    - name: Setup .NET
+    - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.101
-
-    - name: Build
-      run: dotnet build ${SOLUTION} --configuration ${BUILD_CONFIG} -p:Version=${BUILD_VERSION} --no-restore
-
-    - name: Run tests
-      run: dotnet test Tests/Tests.csproj /p:Configuration=${BUILD_CONFIG} --no-restore --no-build --verbosity normal
+        
+    - name: Install dependencies
+      run: dotnet restore
       
-    - name: Publish
-      if: startsWith(github.ref, 'refs/heads/release')
-      run: nuget push **\*.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGETAPIKEY}}
+    - name: Build
+      run: dotnet build --configuration Release  --no-restore
+      
+    - name: Publish to NuGet
+      uses: brandedoutcast/publish-nuget@v2.5.5
+      with:
+        PROJECT_FILE_PATH: HTMLconvert/HTMLconvert.csproj
+        PACKAGE_NAME: HTMLconvert
+        VERSION_REGEX: '^\s*<Version>(.*)<\/Version>\s*$'
+        TAG_FORMAT: '*'
+        NUGET_KEY: ${{secrets.NUGETAPIKEY}}
