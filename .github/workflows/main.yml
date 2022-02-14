@@ -29,6 +29,7 @@ jobs:
     - name: Publish HTMLconvert
       uses: brandedoutcast/publish-nuget@v2.5.5
       with:
+          PACKAGE_NAME: HTMLconvert
           PROJECT_FILE_PATH: HTMLconvert/HTMLconvert.csproj
-          NUGET_KEY: ${{secrets.NUGET_KEY}}
+          NUGET_KEY: ${{secrets.NUGETKEY}}
           VERSION_REGEX: <Version>(.*)<
