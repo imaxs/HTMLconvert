@@ -5,9 +5,18 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <Authors />
-        <AssemblyVersion>1.0.0</AssemblyVersion>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Authors>imaxs</Authors>
+        <Description>C# .NET P/Invoke wrapper for wkhtmltopdf library that uses WebKit to convert HTML to PDF and Image.</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageIconUrl></PackageIconUrl>
+        <PackageProjectUrl>https://github.com/imaxs/HTMLconvert</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/imaxs/HTMLconvert</RepositoryUrl>
+        <RepositoryType></RepositoryType>
+        <PackageTags>wkhtmltopdf, html, pdf, image, convert</PackageTags>
+        <Version>1.0.0</Version>
         <FileVersion>1.0.0</FileVersion>
+        <AssemblyVersion>1.0.0</AssemblyVersion>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
