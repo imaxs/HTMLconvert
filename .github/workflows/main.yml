@@ -28,7 +28,7 @@ jobs:
       uses: kzrnm/get-net-sdk-project-versions-action@v1
       id: version
       with:
-        proj-path: ${CSPROJFILE}
+        proj-path: $env:CSPROJFILE
     - run: |
          echo "${{steps.version.outputs.version}}"
          echo "BUILD_VERSION=${{steps.version.outputs.version}}"
