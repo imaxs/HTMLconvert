@@ -98,7 +98,7 @@ namespace HTMLconvert
 
         public IntPtr CreateConverter(IntPtr globalSettings, string htmlContent)
         {
-            return WkHtmlTox.wkhtmltoimage_create_converter(globalSettings, ToPointer(htmlContent));
+            return WkHtmlTox.wkhtmltoimage_create_converter(globalSettings, Marshal.StringToHGlobalUni(htmlContent));
         }
 
         public void DestroyConverter(IntPtr converter)

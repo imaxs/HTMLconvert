@@ -35,7 +35,7 @@ namespace HTMLconvert.Core.Services
         [DllImport(DLLNAME, CharSet = CHARSET)]
         public static extern int wkhtmltoimage_get_global_setting(IntPtr settings, IntPtr name, IntPtr value, int vs);
 
-        [DllImport(DLLNAME, CharSet = CHARSET, CallingConvention = CallingConvention.StdCall)]
+        [DllImport(DLLNAME, CharSet = CHARSET, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr wkhtmltoimage_create_converter(IntPtr globalSettings, IntPtr data);
 
         [DllImport(DLLNAME, CharSet = CHARSET, CallingConvention = CallingConvention.Cdecl)]

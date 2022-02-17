@@ -13,10 +13,10 @@
         <RepositoryUrl>https://github.com/imaxs/HTMLconvert</RepositoryUrl>
         <RepositoryType></RepositoryType>
         <PackageReleaseNotes></PackageReleaseNotes>
-        <Version>1.0.0</Version>
-        <FileVersion>1.0.0</FileVersion>
-        <AssemblyVersion>1.0.0</AssemblyVersion>
-        <PackageVersion>1.0.0</PackageVersion>
+        <Version>1.0.1</Version>
+        <FileVersion>1.0.1</FileVersion>
+        <AssemblyVersion>1.0.1</AssemblyVersion>
+        <PackageVersion>1.0.1</PackageVersion>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
