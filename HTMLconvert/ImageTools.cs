@@ -60,7 +60,7 @@ namespace HTMLconvert
         {
             IntPtr ptrName = Marshal.StringToHGlobalAnsi(name);
             IntPtr ptrValue = Marshal.StringToHGlobalAnsi(value);
-            
+
             try
             {
                 return WkHtmlTox.wkhtmltoimage_set_global_setting(settings, ptrName, ptrValue);
@@ -98,7 +98,15 @@ namespace HTMLconvert
 
         public IntPtr CreateConverter(IntPtr globalSettings, string htmlContent)
         {
-            return WkHtmlTox.wkhtmltoimage_create_converter(globalSettings, Marshal.StringToHGlobalUni(htmlContent));
+            var data = ToPointer(htmlContent);
+            try
+            {
+                return WkHtmlTox.wkhtmltoimage_create_converter(globalSettings, data);
+            }
+            finally
+            {
+                ClearPointer(data);
+            }
         }
 
         public void DestroyConverter(IntPtr converter)
